@@ -1,520 +1,183 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  
-  <!-- Primary Meta Tags -->
-  <!-- TODO: Replace with your paper title and author names -->
-  <meta name="title" content="PAPER_TITLE - AUTHOR_NAMES">
-  <!-- TODO: Write a compelling 150-160 character description of your research -->
-  <meta name="description" content="BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS">
-  <!-- TODO: Add 5-10 relevant keywords for your research area -->
-  <meta name="keywords" content="KEYWORD1, KEYWORD2, KEYWORD3, machine learning, computer vision, AI">
-  <!-- TODO: List all authors -->
-  <meta name="author" content="FIRST_AUTHOR_NAME, SECOND_AUTHOR_NAME">
-  <meta name="robots" content="index, follow">
-  <meta name="language" content="English">
-  
-  <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="article">
-  <!-- TODO: Replace with your institution or lab name -->
-  <meta property="og:site_name" content="INSTITUTION_OR_LAB_NAME">
-  <!-- TODO: Same as paper title above -->
-  <meta property="og:title" content="PAPER_TITLE">
-  <!-- TODO: Same as description above -->
-  <meta property="og:description" content="BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS">
-  <!-- TODO: Replace with your actual website URL -->
-  <meta property="og:url" content="https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE">
-  <!-- TODO: Create a 1200x630px preview image and update path -->
-  <meta property="og:image" content="https://YOUR_DOMAIN.com/static/images/social_preview.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="PAPER_TITLE - Research Preview">
-  <meta property="article:published_time" content="2024-01-01T00:00:00.000Z">
-  <meta property="article:author" content="FIRST_AUTHOR_NAME">
-  <meta property="article:section" content="Research">
-  <meta property="article:tag" content="KEYWORD1">
-  <meta property="article:tag" content="KEYWORD2">
-
-  <!-- Twitter -->
+  <title>PointPilot — Object-Centric 3D Point Flow for Robotic Manipulation</title>
+  <meta name="description" content="PointPilot unifies single-arm, bimanual, and cross-embodiment manipulation through task-focused objects and directly executable 3D point flow.">
+  <meta name="theme-color" content="#246d82">
+  <link rel="canonical" href="https://point-pilot.github.io/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="PointPilot: Unified Robotic Manipulation via Object-Centric 3D Point Flow Prediction">
+  <meta property="og:description" content="A shared 3D motion interface across manipulation modes and robot embodiments.">
+  <meta property="og:url" content="https://point-pilot.github.io/">
+  <meta property="og:image" content="https://point-pilot.github.io/static/images/pointpilot/overview.png">
   <meta name="twitter:card" content="summary_large_image">
-  <!-- TODO: Replace with your lab/institution Twitter handle -->
-  <meta name="twitter:site" content="@YOUR_TWITTER_HANDLE">
-  <!-- TODO: Replace with first author's Twitter handle -->
-  <meta name="twitter:creator" content="@AUTHOR_TWITTER_HANDLE">
-  <!-- TODO: Same as paper title above -->
-  <meta name="twitter:title" content="PAPER_TITLE">
-  <!-- TODO: Same as description above -->
-  <meta name="twitter:description" content="BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS">
-  <!-- TODO: Same as social preview image above -->
-  <meta name="twitter:image" content="https://YOUR_DOMAIN.com/static/images/social_preview.png">
-  <meta name="twitter:image:alt" content="PAPER_TITLE - Research Preview">
-
-  <!-- Academic/Research Specific -->
-  <meta name="citation_title" content="PAPER_TITLE">
-  <meta name="citation_author" content="FIRST_AUTHOR_LAST, FIRST_AUTHOR_FIRST">
-  <meta name="citation_author" content="SECOND_AUTHOR_LAST, SECOND_AUTHOR_FIRST">
-  <meta name="citation_publication_date" content="2024">
-  <meta name="citation_conference_title" content="CONFERENCE_NAME">
-  <meta name="citation_pdf_url" content="https://YOUR_DOMAIN.com/static/pdfs/paper.pdf">
-  
-  <!-- Additional SEO -->
-  <meta name="theme-color" content="#2563eb">
-  <meta name="msapplication-TileColor" content="#2563eb">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="default">
-  
-  <!-- Preconnect for performance -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://ajax.googleapis.com">
-  <link rel="preconnect" href="https://documentcloud.adobe.com">
-  <link rel="preconnect" href="https://cdn.jsdelivr.net">
-
-
-  <!-- TODO: Replace with your paper title and authors -->
-  <title>PAPER_TITLE - AUTHOR_NAMES | Academic Research</title>
-  
-  <!-- Favicon and App Icons -->
-  <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
-  <link rel="apple-touch-icon" href="static/images/favicon.ico">
-  
-  <!-- Critical CSS - Load synchronously -->
-  <link rel="stylesheet" href="static/css/bulma.min.css">
-  <link rel="stylesheet" href="static/css/index.css">
-  
-  <!-- Non-critical CSS - Load asynchronously -->
-  <link rel="preload" href="static/css/bulma-carousel.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <link rel="preload" href="static/css/bulma-slider.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <link rel="preload" href="static/css/fontawesome.all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <link rel="preload" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  
-  <!-- Fallback for browsers that don't support preload -->
-  <noscript>
-    <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
-    <link rel="stylesheet" href="static/css/bulma-slider.min.css">
-    <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-  </noscript>
-  
-  <!-- Fonts - Optimized loading -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  
-  <!-- Defer non-critical JavaScript -->
-  <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script defer src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
-  <script defer src="static/js/fontawesome.all.min.js"></script>
-  <script defer src="static/js/bulma-carousel.min.js"></script>
-  <script defer src="static/js/bulma-slider.min.js"></script>
-  <script defer src="static/js/index.js"></script>
-  
-  <!-- Structured Data for Academic Papers -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "ScholarlyArticle",
-    "headline": "PAPER_TITLE",
-    "description": "BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS",
-    "author": [
-      {
-        "@type": "Person",
-        "name": "FIRST_AUTHOR_NAME",
-        "affiliation": {
-          "@type": "Organization",
-          "name": "INSTITUTION_NAME"
-        }
-      },
-      {
-        "@type": "Person",
-        "name": "SECOND_AUTHOR_NAME",
-        "affiliation": {
-          "@type": "Organization",
-          "name": "INSTITUTION_NAME"
-        }
-      }
+  <meta name="citation_title" content="PointPilot: Unified Robotic Manipulation via Object-Centric 3D Point Flow Prediction">
+  <meta name="citation_author" content="Anonymous authors">
+  <meta name="citation_pdf_url" content="https://point-pilot.github.io/static/pdfs/pointpilot.pdf">
+  <link rel="icon" type="image/svg+xml" href="static/images/pointpilot/mark.svg">
+  <link rel="stylesheet" href="static/css/pointpilot.css">
+  <script id="transfer-data" type="application/json">{
+  "tasks": [
+    "Grab roller",
+    "Shake bottle",
+    "Shake bottle horizontally",
+    "Click alarm clock",
+    "Click bell",
+    "Dump bin into big bin",
+    "Stack two bowls",
+    "Pick dual bottles"
+  ],
+  "ALOHA": {
+    "ours": [
+      100,
+      100,
+      100,
+      70,
+      80,
+      100,
+      90,
+      50
     ],
-    "datePublished": "2024-01-01",
-    "publisher": {
-      "@type": "Organization",
-      "name": "CONFERENCE_OR_JOURNAL_NAME"
-    },
-    "url": "https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE",
-    "image": "https://YOUR_DOMAIN.com/static/images/social_preview.png",
-    "keywords": ["KEYWORD1", "KEYWORD2", "KEYWORD3", "machine learning", "computer vision"],
-    "abstract": "FULL_ABSTRACT_TEXT_HERE",
-    "citation": "BIBTEX_CITATION_HERE",
-    "isAccessibleForFree": true,
-    "license": "https://creativecommons.org/licenses/by/4.0/",
-    "mainEntity": {
-      "@type": "WebPage",
-      "@id": "https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE"
-    },
-    "about": [
-      {
-        "@type": "Thing",
-        "name": "RESEARCH_AREA_1"
-      },
-      {
-        "@type": "Thing", 
-        "name": "RESEARCH_AREA_2"
-      }
+    "baseline": [
+      100,
+      100,
+      100,
+      0,
+      100,
+      100,
+      30,
+      100
     ]
-  }
-  </script>
-  
-  <!-- Website/Organization Structured Data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "INSTITUTION_OR_LAB_NAME",
-    "url": "https://YOUR_INSTITUTION_WEBSITE.com",
-    "logo": "https://YOUR_DOMAIN.com/static/images/favicon.ico",
-    "sameAs": [
-      "https://twitter.com/YOUR_TWITTER_HANDLE",
-      "https://github.com/YOUR_GITHUB_USERNAME"
+  },
+  "ARX": {
+    "ours": [
+      90,
+      90,
+      90,
+      60,
+      70,
+      70,
+      80,
+      40
+    ],
+    "baseline": [
+      80,
+      80,
+      90,
+      60,
+      100,
+      10,
+      10,
+      90
     ]
-  }
-  </script>
+  },
+  "Piper": {
+    "ours": [
+      100,
+      100,
+      100,
+      null,
+      70,
+      60,
+      60,
+      40
+    ],
+    "baseline": [
+      20,
+      30,
+      30,
+      null,
+      0,
+      40,
+      0,
+      50
+    ]
+  },
+  "source": "Manuscript v5, Table 4. 10 trials per evaluated task; Piper excludes the incompatible alarm-clock task."
+}</script>
+  <script defer src="static/js/pointpilot.js"></script>
 </head>
 <body>
-
-
-  <!-- Scroll to Top Button -->
-  <button class="scroll-to-top" onclick="scrollToTop()" title="Scroll to top" aria-label="Scroll to top">
-    <i class="fas fa-chevron-up"></i>
-  </button>
-
-  <!-- More Works Dropdown -->
-  <div class="more-works-container">
-    <button class="more-works-btn" onclick="toggleMoreWorks()" title="View More Works from Our Lab">
-      <i class="fas fa-flask"></i>
-      More Works
-      <i class="fas fa-chevron-down dropdown-arrow"></i>
-    </button>
-    <div class="more-works-dropdown" id="moreWorksDropdown">
-      <div class="dropdown-header">
-        <h4>More Works from Our Lab</h4>
-        <button class="close-btn" onclick="toggleMoreWorks()">
-          <i class="fas fa-times"></i>
-        </button>
-      </div>
-      <div class="works-list">
-        <!-- TODO: Replace with your lab's related works -->
-        <a href="https://arxiv.org/abs/PAPER_ID_1" class="work-item" target="_blank">
-          <div class="work-info">
-            <!-- TODO: Replace with actual paper title -->
-            <h5>Paper Title 1</h5>
-            <!-- TODO: Replace with brief description -->
-            <p>Brief description of the work and its main contribution.</p>
-            <!-- TODO: Replace with venue and year -->
-            <span class="work-venue">Conference/Journal 2024</span>
-          </div>
-          <i class="fas fa-external-link-alt"></i>
-        </a>
-        <!-- TODO: Add more related works or remove extra items -->
-        <a href="https://arxiv.org/abs/PAPER_ID_2" class="work-item" target="_blank">
-          <div class="work-info">
-            <h5>Paper Title 2</h5>
-            <p>Brief description of the work and its main contribution.</p>
-            <span class="work-venue">Conference/Journal 2023</span>
-          </div>
-          <i class="fas fa-external-link-alt"></i>
-        </a>
-        <a href="https://arxiv.org/abs/PAPER_ID_3" class="work-item" target="_blank">
-          <div class="work-info">
-            <h5>Paper Title 3</h5>
-            <p>Brief description of the work and its main contribution.</p>
-            <span class="work-venue">Conference/Journal 2023</span>
-          </div>
-          <i class="fas fa-external-link-alt"></i>
-        </a>
-      </div>
-    </div>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="nav-wrap">
+    <a class="wordmark" href="#home" aria-label="PointPilot home"><img src="static/images/pointpilot/mark.svg" alt="" width="30" height="30">PointPilot<span class="wordmark-dot">.</span></a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav">Menu <span aria-hidden="true">☰</span></button>
+    <nav id="main-nav" aria-label="Main navigation"><a href="#overview">Overview</a><a href="#method">Method</a><a href="#transfer">Transfer</a><a href="#experiments">Experiments</a><a class="nav-paper" href="static/pdfs/pointpilot.pdf">Paper <span aria-hidden="true">↗</span></a></nav>
   </div>
-
-  <main id="main-content">
-  <section class="hero">
-    <div class="hero-body">
-      <div class="container is-max-desktop">
-        <div class="columns is-centered">
-          <div class="column has-text-centered">
-            <!-- TODO: Replace with your paper title -->
-            <h1 class="title is-1 publication-title">Academic Project Page</h1>
-            <div class="is-size-5 publication-authors">
-              <!-- TODO: Replace with your paper authors and their personal links -->
-              <span class="author-block">
-                <a href="FIRST AUTHOR PERSONAL LINK" target="_blank">First Author</a><sup>*</sup>,</span>
-                <span class="author-block">
-                  <a href="SECOND AUTHOR PERSONAL LINK" target="_blank">Second Author</a><sup>*</sup>,</span>
-                  <span class="author-block">
-                    <a href="THIRD AUTHOR PERSONAL LINK" target="_blank">Third Author</a>
-                  </span>
-                  </div>
-
-                  <div class="is-size-5 publication-authors">
-                    <!-- TODO: Replace with your institution and conference/journal info -->
-                    <span class="author-block">Institution Name<br>Conference name and year</span>
-                    <!-- TODO: Remove this line if no equal contribution -->
-                    <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small></span>
-                  </div>
-
-                  <div class="column has-text-centered">
-                    <div class="publication-links">
-                         <!-- TODO: Update with your arXiv paper ID -->
-                      <span class="link-block">
-                        <a href="https://arxiv.org/pdf/<ARXIV PAPER ID>.pdf" target="_blank"
-                        class="external-link button is-normal is-rounded is-dark">
-                        <span class="icon">
-                          <i class="fas fa-file-pdf"></i>
-                        </span>
-                        <span>Paper</span>
-                      </a>
-                    </span>
-
-                    <!-- TODO: Add your supplementary material PDF or remove this section -->
-                    <span class="link-block">
-                      <a href="static/pdfs/supplementary_material.pdf" target="_blank"
-                      class="external-link button is-normal is-rounded is-dark">
-                      <span class="icon">
-                        <i class="fas fa-file-pdf"></i>
-                      </span>
-                      <span>Supplementary</span>
-                    </a>
-                  </span>
-
-                  <!-- TODO: Replace with your GitHub repository URL -->
-                  <span class="link-block">
-                    <a href="https://github.com/YOUR REPO HERE" target="_blank"
-                    class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon">
-                      <i class="fab fa-github"></i>
-                    </span>
-                    <span>Code</span>
-                  </a>
-                </span>
-
-                <!-- TODO: Update with your arXiv paper ID -->
-                <span class="link-block">
-                  <a href="https://arxiv.org/abs/<ARXIV PAPER ID>" target="_blank"
-                  class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                    <i class="ai ai-arxiv"></i>
-                  </span>
-                  <span>arXiv</span>
-                </a>
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+</header>
+<main id="main">
+<section class="hero container" id="home">
+  <div class="eyebrow"><span class="status-dot"></span>3D point flow · Robot learning</div>
+  <h1><span class="hero-name">PointPilot</span><span class="hero-title">Unified Robotic Manipulation via<br class="desktop-break"> Object-Centric 3D Point Flow Prediction</span></h1>
+  <p class="authors">Anonymous authors <span class="dot-divider">·</span> Manuscript under review</p>
+  <div class="resource-links"><a class="button primary" href="static/pdfs/pointpilot.pdf"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h7l4 4v14H7zM14 3v5h4M10 12h5M10 16h5"/></svg>Read the paper</a><a class="button secondary" href="#transfer">Explore the results <span aria-hidden="true">↓</span></a><span class="coming-soon" aria-label="Code release coming soon">Code <span>coming soon</span></span></div>
+  <div class="hero-visual">
+    <figure class="hero-render"><img src="static/images/pointpilot/point-flow.webp" width="2880" height="2009" alt="A complete ALOHA–AgileX arm and two continuous stages: six gripper trajectories approach a green block, followed by six block trajectories toward a red block." fetchpriority="high"><figcaption>Stage-dependent point flow · conceptual illustration</figcaption></figure>
+    <div class="hero-story"><span class="small-label">A shared motion interface</span><h2>Follow the task.<br> Across embodiments.</h2><p>Predict how task-focused objects should move in 3D, then turn that motion into robot actions through geometry.</p><div class="stage-key"><span class="flow-dot teal"></span><div><strong>01 &nbsp; Reach &amp; grasp</strong><span>Predict the gripper’s motion.</span></div></div><div class="stage-key"><span class="flow-dot violet"></span><div><strong>02 &nbsp; Transport &amp; manipulate</strong><span>Predict the coupled object’s motion.</span></div></div><a class="text-link" href="#method">How PointPilot works <span aria-hidden="true">↗</span></a></div>
   </div>
+  <div class="headline-metrics"><div><strong>85.8<span>%</span></strong><span>LIBERO average success</span></div><div><strong>56.6<span>%</span></strong><span>RoboTwin 2.0 Clean success</span></div><div><strong>2</strong><span>Unseen target embodiments</span></div><div><strong>1</strong><span>Jointly trained simulation policy</span></div></div>
+  <p class="metric-note">Results from the current manuscript. Evaluation settings and baseline sources are detailed below.</p>
 </section>
-
-
-<!-- Teaser video-->
-<section class="hero teaser">
-  <div class="container is-max-desktop">
-    <div class="hero-body">
-      <!-- TODO: Replace with your teaser video -->
-      <video poster="" id="tree" autoplay controls muted loop height="100%" preload="metadata">
-        <!-- TODO: Add your video file path here -->
-        <source src="static/videos/banner_video.mp4" type="video/mp4">
-      </video>
-      <!-- TODO: Replace with your video description -->
-      <h2 class="subtitle has-text-centered">
-        Aliquam vitae elit ullamcorper tellus egestas pellentesque. Ut lacus tellus, maximus vel lectus at, placerat pretium mi. Maecenas dignissim tincidunt vestibulum. Sed consequat hendrerit nisl ut maximus. 
-      </h2>
-    </div>
-  </div>
+<section class="section container" id="overview">
+  <div class="section-heading"><span class="section-index">01 / Overview</span><h2>Unify the motion space.</h2><p>Grippers and manipulated objects share one prediction interface.</p></div>
+  <div class="abstract-copy"><p>Robot demonstrations differ in their action spaces, camera poses, and manipulation modes. <strong>PointPilot represents motion through task-focused objects</strong>: the gripper itself during approach, or a locally rigid object part coupled to it during manipulation.</p><p>A memory-conditioned vision–language model plans subtasks, grounds the relevant objects, and conditions a 3D point-flow predictor. Observations and predicted motion are aligned in a shared reference-camera frame. A <strong>non-learned geometric adapter</strong> maps this flow to end-effector targets for closed-loop execution.</p></div>
+  <figure class="paper-figure"><a href="static/images/pointpilot/overview.png" class="zoomable" data-caption="PointPilot overview · Figure 1" aria-label="Enlarge the PointPilot overview"><img src="static/images/pointpilot/overview.webp" width="1902" height="1026" loading="lazy" alt="PointPilot overview: language and multi-view RGB lead to task-focused point flow, a geometric adapter, and closed-loop execution across single-arm, bimanual and unseen embodiments."><span class="zoom-hint">Expand figure ↗</span></a><figcaption>One object-centric representation for supported single-arm and bimanual manipulation, with zero-shot transfer to unseen robot embodiments.</figcaption></figure>
 </section>
-<!-- End teaser video -->
-
-<!-- Paper abstract -->
-<section class="section hero is-light">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Abstract</h2>
-        <div class="content has-text-justified">
-          <!-- TODO: Replace with your paper abstract -->
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ullamcorper tellus sed ante aliquam tempus. Etiam porttitor urna feugiat nibh elementum, et tempor dolor mattis. Donec accumsan enim augue, a vulputate nisi sodales sit amet. Proin bibendum ex eget mauris cursus euismod nec et nibh. Maecenas ac gravida ante, nec cursus dui. Vivamus purus nibh, placerat ac purus eget, sagittis vestibulum metus. Sed vestibulum bibendum lectus gravida commodo. Pellentesque auctor leo vitae sagittis suscipit.
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
+<section class="section section-tint" id="method"><div class="container">
+  <div class="section-heading"><span class="section-index">02 / Method</span><h2>From intent to executable motion.</h2><p>Planning, grounding, and flow prediction connect through a common 3D frame.</p></div>
+  <div class="method-steps"><article><span class="step-number">01</span><h3>Plan the next subtask</h3><p>A memory-conditioned Qwen2.5-VL planner identifies current and next subtasks for each hand.</p></article><article><span class="step-number">02</span><h3>Ground task-focused objects</h3><p>Camera-aware 3D grounding predicts object boxes and execution roles: left, right, or both grippers.</p></article><article><span class="step-number">03</span><h3>Predict and execute flow</h3><p>Point Flow DiT predicts relative point displacements and gripper states. Geometry converts motion into end-effector commands.</p></article></div>
+  <figure class="paper-figure method-figure"><a href="static/images/pointpilot/method.png" class="zoomable" data-caption="PointPilot architecture · Figure 2" aria-label="Enlarge the PointPilot architecture"><img src="static/images/pointpilot/method.webp" width="2148" height="1372" loading="lazy" alt="Architecture showing memory-conditioned planning, task-conditioned grounding, aligned multi-view frustums, and a Point Flow Diffusion Transformer."><span class="zoom-hint">Expand figure ↗</span></a><figcaption>PointPilot jointly learns subtask planning, task-relevant object grounding, and point-flow prediction. No separately trained motion-to-action head is used.</figcaption></figure>
+  <div class="method-bottom"><span class="loop-icon" aria-hidden="true">↻</span><p><strong>Observe, execute, replan.</strong> Updated observations close the loop after each action chunk.</p><a href="static/pdfs/pointpilot.pdf#page=4" class="text-link">Method in the paper ↗</a></div>
+</div></section>
+<section class="section container" id="transfer">
+  <div class="section-heading"><span class="section-index">03 / Zero-shot transfer</span><h2>Same policy. Different robots.</h2><p>Transfer from ALOHA to ARX and Piper without target-embodiment demonstrations or fine-tuning.</p></div>
+  <div class="transfer-layout"><div class="demo-column"><div class="demo-grid"><figure class="video-card"><div class="video-heading"><strong>ARX</strong><span>Unseen embodiment</span></div><video controls muted playsinline preload="metadata" poster="static/images/pointpilot/arx-poster.jpg" aria-label="ARX simulation rollout of shaking a bottle"><source src="static/videos/pointpilot/arx-shake-bottle.mp4" type="video/mp4">Your browser does not support video. <a href="static/videos/pointpilot/arx-shake-bottle.mp4">Download the ARX clip.</a></video><figcaption>Shake bottle · simulation</figcaption></figure><figure class="video-card"><div class="video-heading"><strong>Piper</strong><span>Unseen embodiment</span></div><video controls muted playsinline preload="metadata" poster="static/images/pointpilot/piper-poster.jpg" aria-label="Piper simulation rollout of shaking a bottle"><source src="static/videos/pointpilot/piper-shake-bottle.mp4" type="video/mp4">Your browser does not support video. <a href="static/videos/pointpilot/piper-shake-bottle.mp4">Download the Piper clip.</a></video><figcaption>Shake bottle · simulation</figcaption></figure></div><p class="fine-print">Recorded simulation rollouts, shown at 10 fps for visualization. Playback is not a real-time speed comparison.</p><div class="transfer-explanation"><h3>Motion first, embodiment second.</h3><p>Predicted object motion is mapped to each target robot through its kinematics and controller. The point-flow prediction model stays fixed.</p><span class="pill">No target-embodiment fine-tuning</span></div></div>
+  <div class="result-panel"><div class="panel-top"><h3>Cross-embodiment success</h3><span class="small-label">Simulation · Table 4</span></div><div class="segmented" role="group" aria-label="Select robot embodiment"><button type="button" data-embodiment="ALOHA" aria-pressed="false">ALOHA</button><button type="button" data-embodiment="ARX" aria-pressed="true">ARX</button><button type="button" data-embodiment="Piper" aria-pressed="false">Piper</button></div><div class="score-bars" aria-live="polite"><div class="score-row"><div><span>PointPilot</span><strong id="ours-score">73.8%</strong></div><div class="bar-track"><span id="ours-bar" style="width:73.8%"></span></div></div><div class="score-row baseline"><div><span>X-VLA</span><strong id="baseline-score">65.0%</strong></div><div class="bar-track"><span id="baseline-bar" style="width:65%"></span></div></div></div><div class="table-scroll" tabindex="0" role="region" aria-label="Cross-embodiment task success rates"><table class="compact-table"><caption id="transfer-caption">ARX · Success rate (%)</caption><thead><tr><th scope="col">Task</th><th scope="col">PointPilot</th><th scope="col">X-VLA</th></tr></thead><tbody id="transfer-body"><tr><th scope="row">Grab roller</th><td>90.0</td><td>80.0</td></tr><tr><th scope="row">Shake bottle</th><td>90.0</td><td>80.0</td></tr><tr><th scope="row">Shake bottle horizontally</th><td>90.0</td><td>90.0</td></tr><tr><th scope="row">Click alarm clock</th><td>60.0</td><td>60.0</td></tr><tr><th scope="row">Click bell</th><td>70.0</td><td>100.0</td></tr><tr><th scope="row">Dump bin into big bin</th><td>70.0</td><td>10.0</td></tr><tr><th scope="row">Stack two bowls</th><td>80.0</td><td>10.0</td></tr><tr><th scope="row">Pick dual bottles</th><td>40.0</td><td>90.0</td></tr></tbody></table></div><p class="fine-print" id="transfer-note">8 tasks · 10 trials per evaluated task. ARX is unseen during policy training.</p></div></div>
+  <p class="section-footnote">X-VLA uses its official checkpoint without ARX or Piper training. Experiments use matched seeds. Piper averages cover seven compatible tasks; the alarm-clock task is excluded. <a href="static/pdfs/pointpilot.pdf#page=8">See evaluation details ↗</a></p>
+  <noscript><p>Enable JavaScript to switch embodiments. The table above shows ARX; the paper includes all three embodiments.</p></noscript>
 </section>
-<!-- End paper abstract -->
-
-
-<!-- Image carousel -->
-<section class="hero is-small">
-  <div class="hero-body">
-    <div class="container">
-      <div id="results-carousel" class="carousel results-carousel">
-       <div class="item">
-        <!-- TODO: Replace with your research result images -->
-        <img src="static/images/carousel1.jpg" alt="First research result visualization" loading="lazy"/>
-        <!-- TODO: Replace with description of this result -->
-        <h2 class="subtitle has-text-centered">
-          First image description.
-        </h2>
-      </div>
-      <div class="item">
-        <!-- Your image here -->
-        <img src="static/images/carousel2.jpg" alt="Second research result visualization" loading="lazy"/>
-        <h2 class="subtitle has-text-centered">
-          Second image description.
-        </h2>
-      </div>
-      <div class="item">
-        <!-- Your image here -->
-        <img src="static/images/carousel3.jpg" alt="Third research result visualization" loading="lazy"/>
-        <h2 class="subtitle has-text-centered">
-         Third image description.
-       </h2>
-     </div>
-     <div class="item">
-      <!-- Your image here -->
-      <img src="static/images/carousel4.jpg" alt="Fourth research result visualization" loading="lazy"/>
-      <h2 class="subtitle has-text-centered">
-        Fourth image description.
-      </h2>
-    </div>
-  </div>
-</div>
-</div>
+<section class="section section-tint" id="realworld"><div class="container">
+  <div class="section-heading"><span class="section-index">04 / Real-world manipulation</span><h2>Three tasks, closed-loop execution.</h2><p>PointPilot replans from new observations throughout autonomous manipulation.</p></div>
+  <div class="realworld-layout"><figure class="paper-figure"><a class="zoomable" href="static/images/pointpilot/realworld.png" data-caption="Real-world task sequences · Figure 3" aria-label="Enlarge the real-world execution sequences"><img src="static/images/pointpilot/realworld.webp" width="2190" height="1548" loading="lazy" alt="Three successive subtasks for retail barcode scanning, placing a Rubik’s cube into a bin, and pouring from a bottle."><span class="zoom-hint">Expand figure ↗</span></a><figcaption>Staged execution from the manuscript, read left to right.</figcaption></figure><div class="task-results"><article><span class="small-label">01 / Retail</span><h3>Barcode scanning</h3><div><strong>50<span>%</span></strong><span>10 / 20 trials</span></div></article><article><span class="small-label">02 / Pick &amp; place</span><h3>Rubik’s cube into a bin</h3><div><strong>90<span>%</span></strong><span>18 / 20 trials</span></div></article><article><span class="small-label">03 / Tool use</span><h3>Pouring from a bottle</h3><div><strong>70<span>%</span></strong><span>14 / 20 trials</span></div></article><p class="fine-print">Table 5 · 20 trials per task; 70% average success. Real-world results are reported separately from simulation transfer.</p></div></div>
+</div></section>
+<section class="section container" id="experiments">
+  <div class="section-heading"><span class="section-index">05 / Experiments</span><h2>One model across manipulation modes.</h2><p>A shared policy jointly trained on LIBERO and RoboTwin demonstrations.</p></div>
+  <div class="benchmark-tabs" role="group" aria-label="Select benchmark"><button type="button" data-benchmark="libero" aria-pressed="true">LIBERO <span>Single-arm</span></button><button type="button" data-benchmark="robotwin" aria-pressed="false">RoboTwin 2.0 <span>Bimanual</span></button></div>
+  <div id="benchmark-libero" class="benchmark-panel"><div class="table-scroll" tabindex="0" role="region" aria-label="LIBERO benchmark results"><table><caption>LIBERO success rates (%) · Table 2</caption><thead><tr><th scope="col">Method</th><th scope="col">Spatial</th><th scope="col">Object</th><th scope="col">Goal</th><th scope="col">Long</th><th scope="col">Average</th></tr></thead><tbody><tr><th scope="row">Octo</th><td>78.9</td><td>85.7</td><td>84.6</td><td>51.1</td><td>75.1</td></tr>
+<tr><th scope="row">CogACT</th><td>87.5</td><td>90.2</td><td>78.4</td><td>53.2</td><td>77.3</td></tr>
+<tr><th scope="row">OpenVLA</th><td>84.7</td><td>88.4</td><td>79.2</td><td>53.7</td><td>76.5</td></tr>
+<tr><th scope="row">TraceVLA</th><td>84.6</td><td>85.2</td><td>75.1</td><td>54.1</td><td>74.8</td></tr>
+<tr><th scope="row">SpatialVLA</th><td>88.2</td><td>89.9</td><td>78.6</td><td>55.5</td><td>78.1</td></tr>
+<tr><th scope="row">4D-VLA</th><td>88.9</td><td>95.2</td><td>90.9</td><td>79.1</td><td>88.6</td></tr>
+<tr><th scope="row">DP w/ RoboFlow4D</th><td>89.8</td><td>93.2</td><td>85.2</td><td>72.0</td><td>85.1</td></tr>
+<tr><th scope="row">DiT w/ RoboFlow4D</th><td>90.2</td><td>97.0</td><td>88.4</td><td>75.2</td><td>87.7</td></tr>
+<tr><th scope="row">UniAct (ACT head)</th><td>77.0</td><td>87.0</td><td>77.0</td><td>70.0</td><td>77.8</td></tr>
+<tr><th scope="row">SmolVLA (2.25B)</th><td>93.0</td><td>94.0</td><td>91.0</td><td>77.0</td><td>88.8</td></tr>
+<tr class="ours"><th scope="row">PointPilot</th><td>96.0</td><td>97.6</td><td>72.4</td><td>77.2</td><td>85.8</td></tr></tbody></table></div><p class="section-footnote">Baseline results follow the evaluation reported by RoboFlow4D. PointPilot uses the same jointly trained policy for LIBERO and RoboTwin. Results are reproduced from the current draft, not independently re-evaluated here.</p></div>
+  <div id="benchmark-robotwin" class="benchmark-panel" hidden><div class="table-scroll" tabindex="0" role="region" aria-label="RoboTwin benchmark results"><table><caption>RoboTwin 2.0 Clean success rates (%) · Table 3</caption><thead><tr><th scope="col">Method</th><th scope="col">Success rate</th></tr></thead><tbody><tr><th scope="row">DP</th><td>28.0</td></tr>
+<tr><th scope="row">ACT</th><td>29.7</td></tr>
+<tr><th scope="row">RDT-1B</th><td>34.5</td></tr>
+<tr><th scope="row">GR00T-N1.7 †</th><td>43.6</td></tr>
+<tr><th scope="row">π₀</th><td>46.4</td></tr>
+<tr><th scope="row">DP3</th><td>55.2</td></tr>
+<tr class="ours"><th scope="row">PointPilot</th><td>56.6</td></tr></tbody></table></div><p class="section-footnote">Baselines are reported by RoboTwin 2.0. † GR00T-N1.7 is reported under the Easy setting of RoboTwin-Clean2Rand by Qwen-RobotManip, as noted in the manuscript; its setting differs from the other entries.</p></div>
+  <noscript><p>The default table shows LIBERO. RoboTwin results are available in Table 3 of the paper.</p></noscript>
+  <div class="ablation-layout"><article class="memory-result"><span class="small-label">Ablation / Planning memory</span><h3>History helps the policy move forward.</h3><p>Remembering prior subtasks reduces repeated actions during replanning, especially in long-horizon tasks.</p><div class="ablation-number">+22.2<span>percentage points</span></div><p class="fine-print">LIBERO-Long: 55.0% without memory → 77.2% with memory. Table 6.</p></article><figure class="geometry-result"><span class="small-label">Ablation / 3D alignment</span><h3>Shared geometry improves flow learning.</h3><a class="zoomable" href="static/images/pointpilot/geometry-ablation.png" data-caption="Geometric alignment ablation · Figure 4" aria-label="Enlarge the geometry ablation chart"><img src="static/images/pointpilot/geometry-ablation.webp" width="717" height="440" loading="lazy" alt="Point-flow training loss decreases as main-view frustums, additional views, and aligned multi-view 3D frustums are introduced."></a><figcaption>Final point-flow loss: 0.015 → 0.002 with aligned multi-view 3D frustums. Figure 4.</figcaption></figure></div>
+  <div class="scope-note"><h3>Scope &amp; limitations</h3><p>The current framework focuses on locally rigid task-focused objects and gripper-based execution under stage-local coupling. Non-coupled, friction-driven interactions remain challenging. Dexterous hands, changing contacts, and larger-scale human hand–object data are directions for future work.</p></div>
 </section>
-<!-- End image carousel -->
-
-
-
-
-<!-- Youtube video -->
-<section class="hero is-small is-light">
-  <div class="hero-body">
-    <div class="container">
-      <!-- Paper video. -->
-      <h2 class="title is-3">Video Presentation</h2>
-      <div class="columns is-centered has-text-centered">
-        <div class="column is-four-fifths">
-          
-          <div class="publication-video">
-            <!-- TODO: Replace with your YouTube video ID -->
-            <iframe src="https://www.youtube.com/embed/JkaxUblCGz0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- End youtube video -->
-
-
-<!-- Video carousel -->
-<section class="hero is-small">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title is-3">Another Carousel</h2>
-      <div id="results-carousel" class="carousel results-carousel">
-        <div class="item item-video1">
-          <!-- TODO: Add poster image for better preview -->
-          <video poster="" id="video1" controls muted loop height="100%" preload="metadata">
-            <!-- Your video file here -->
-            <source src="static/videos/carousel1.mp4" type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-video2">
-          <!-- TODO: Add poster image for better preview -->
-          <video poster="" id="video2" controls muted loop height="100%" preload="metadata">
-            <!-- Your video file here -->
-            <source src="static/videos/carousel2.mp4" type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-video3">
-          <!-- TODO: Add poster image for better preview -->
-          <video poster="" id="video3" controls muted loop height="100%" preload="metadata">
-            <!-- Your video file here -->
-            <source src="static/videos/carousel3.mp4" type="video/mp4">
-          </video>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- End video carousel -->
-
-
-
-
-
-
-<!-- Paper poster -->
-<section class="hero is-small is-light">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title">Poster</h2>
-
-      <!-- TODO: Replace with your poster PDF -->
-      <iframe  src="static/pdfs/sample.pdf" width="100%" height="550">
-          </iframe>
-        
-      </div>
-    </div>
-  </section>
-<!--End paper poster -->
-
-
-
-<!--BibTex citation -->
-  <section class="section" id="BibTeX">
-    <div class="container is-max-desktop content">
-      <div class="bibtex-header">
-        <h2 class="title">BibTeX</h2>
-        <button class="copy-bibtex-btn" onclick="copyBibTeX()" title="Copy BibTeX to clipboard">
-          <i class="fas fa-copy"></i>
-          <span class="copy-text">Copy</span>
-        </button>
-      </div>
-      <pre id="bibtex-code"><code>@article{YourPaperKey2024,
-  title={Your Paper Title Here},
-  author={First Author and Second Author and Third Author},
-  journal={Conference/Journal Name},
-  year={2024},
-  url={https://your-domain.com/your-project-page}
-}</code></pre>
-    </div>
-</section>
-<!--End BibTex citation -->
-
-
-  <footer class="footer">
-  <div class="container">
-    <div class="columns is-centered">
-      <div class="column is-8">
-        <div class="content">
-
-          <p>
-            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
-            You are free to borrow the source code of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
-            Commons Attribution-ShareAlike 4.0 International License</a>.
-          </p>
-
-        </div>
-      </div>
-    </div>
-  </div>
-</footer>
-
-<!-- Statcounter tracking code -->
-  
-<!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
-
-    <!-- End of Statcounter Code -->
-
-  </body>
-  </html>
+<section class="section citation-section" id="citation"><div class="container citation-layout"><div><span class="section-index">06 / Resources</span><h2>Read the full paper.</h2><p>Architecture, evaluation protocols,<br>and detailed results in one place.</p><a class="button primary" href="static/pdfs/pointpilot.pdf">Paper PDF <span aria-hidden="true">↗</span></a><p class="fine-print">Code and additional videos: coming soon.</p></div><div class="citation-box"><div><h3>Provisional citation</h3><button type="button" class="copy-button" id="copy-citation">Copy BibTeX</button></div><pre><code id="bibtex">@misc{pointpilot2026,
+  title  = {PointPilot: Unified Robotic Manipulation
+            via Object-Centric 3D Point Flow Prediction},
+  author = {Anonymous authors},
+  year   = {2026},
+  note   = {Manuscript under review},
+  url    = {https://point-pilot.github.io/}
+}</code></pre><span id="copy-status" role="status" class="copy-status"></span></div></div></section>
+</main>
+<footer class="site-footer container"><a class="wordmark" href="#home">PointPilot<span class="wordmark-dot">.</span></a><p>Website adapted from <a href="https://github.com/eliahuhorwitz/Academic-project-page-template">Academic Project Page Template</a> and <a href="https://nerfies.github.io/">Nerfies</a>.<br>Website template licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.</p><a href="#home" class="back-top">Back to top ↑</a></footer>
+<dialog id="figure-dialog" aria-labelledby="figure-dialog-title"><div class="dialog-top"><h2 id="figure-dialog-title">Figure</h2><button type="button" id="close-figure" aria-label="Close enlarged figure">Close ×</button></div><img id="dialog-image" alt=""></dialog>
+</body>
+</html>

@@ -1,0 +1,59 @@
+{
+  "overview": {
+    "file": "overview.png",
+    "source_page": 2,
+    "size": [
+      1902,
+      1026
+    ]
+  },
+  "method": {
+    "file": "method.png",
+    "source_page": 4,
+    "size": [
+      2148,
+      1372
+    ]
+  },
+  "realworld": {
+    "file": "realworld.png",
+    "source_page": 9,
+    "size": [
+      2190,
+      1548
+    ]
+  },
+  "geometry-ablation": {
+    "file": "geometry-ablation.png",
+    "source_page": 9,
+    "size": [
+      717,
+      440
+    ]
+  },
+  "arx-video": {
+    "file": "static/videos/pointpilot/arx-shake-bottle.mp4",
+    "source": "/NAS-NFS/yihanfang/starVLA-sparseWM-petr-gripper-only-robotwin/outputs/sparsewm_robotwin_v5/paired_arx_all50_steps80000_ep10_replan30_max300/tasks/shake_bottle/candidates/100000/policy/rollout.gif",
+    "summary": "/NAS-NFS/yihanfang/starVLA-sparseWM-petr-gripper-only-robotwin/outputs/sparsewm_robotwin_v5/paired_arx_all50_steps80000_ep10_replan30_max300/tasks/shake_bottle/candidates/100000/policy/summary.json",
+    "success": true,
+    "seed": 100000,
+    "frames": 20,
+    "visualization_fps": 10,
+    "note": "Simulation rollout, exported at 10 fps. Original GIF does not contain timing metadata; not real-time playback."
+  },
+  "piper-video": {
+    "file": "static/videos/pointpilot/piper-shake-bottle.mp4",
+    "source": "/NAS-NFS/yihanfang/starVLA-sparseWM-petr-gripper-only-robotwin/outputs/sparsewm_robotwin_v5/paired_piper_steps80000_ep10_replan30_max300_aligned_eef/tasks/shake_bottle/candidates/100000/policy/rollout.gif",
+    "summary": "/NAS-NFS/yihanfang/starVLA-sparseWM-petr-gripper-only-robotwin/outputs/sparsewm_robotwin_v5/paired_piper_steps80000_ep10_replan30_max300_aligned_eef/tasks/shake_bottle/candidates/100000/policy/summary.json",
+    "success": true,
+    "seed": 100000,
+    "frames": 70,
+    "visualization_fps": 10,
+    "note": "Simulation rollout, exported at 10 fps. Original GIF does not contain timing metadata; not real-time playback."
+  },
+  "point-flow": {
+    "file": "static/images/pointpilot/point-flow.png",
+    "source": "../starVLA-sparseWM-petr-gripper-only-robotwin/outputs/paper_figures/pointpilot_overview_reachable_full_arm/aloha_agilex_full_arm_no_annotations_transparent.png",
+    "note": "Kinematically checked conceptual illustration, six tracks per stage; not a model rollout."
+  }
+}
